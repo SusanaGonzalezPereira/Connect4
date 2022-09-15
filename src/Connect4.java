@@ -8,7 +8,7 @@ public class Connect4 {
         this.board = new Board();
         this.players = new Player[2];
         for (int i = 0; i < 2; i++) {
-            players[i] = new Player(this.board);
+            players[i] = new Player(this.board, 'x');
         }
         this.turn = new Turn();
     }

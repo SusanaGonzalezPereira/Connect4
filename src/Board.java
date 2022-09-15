@@ -14,14 +14,15 @@ public class Board {
     }
 
     public void show() {
-        System.out.println("Tablero actual:");
+        System.out.println("Board status:");
         for ( int i = 0; i < MAX_ROWS ; i++ ){
+            System.out.print("|" +  (i+1) + "|\t");
             for ( int j = 0; j < MAX_COLUMNS; j++) {
-                System.out.print( "|" + map[i][j] );
+                System.out.print("|" + map[i][j] );
             }
             System.out.println("|");
         }
-        System.out.println("-------------------");
+        System.out.println("|0|\t|1|2|3|4|5|6|7|");
     }
 
     public boolean hasWinner() {
@@ -47,5 +48,11 @@ public class Board {
     private boolean isSolutionInverseDiagonal() {
         //TODO:Implementar
         return true;
+    }
+
+    public boolean isAvailableRow(int row) {
+    }
+
+    public boolean isAvailableCol(int col) {
     }
 }
