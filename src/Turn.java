@@ -1,19 +1,21 @@
 public class Turn {
 
-    private int turn; //TODO:Preguntar si esta bien
+    private final int MAX_TURNS = (Board.MAX_ROWS * Board.MAX_COLUMNS) - 1;
+    private int turn; //TODO: Ask if this is ok
 
     public Turn() {
         this.turn = 0;
     }
 
     public int getTurn() {
-        return this.turn;
+        return this.turn % 2;
     }
+
     public void changeTurn() {
-        if (this.turn == 0){
-            this.turn = 1;
-        } else {
-            this.turn = 0;
-        }
+        this.turn++;
+    }
+
+    public boolean isDraw() {
+        return turn == MAX_TURNS;
     }
 }

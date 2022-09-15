@@ -1,8 +1,8 @@
 public class Connect4 {
 
-    private Board board;
-    private Player[] players;
-    private Turn turn;
+    private final Board board;
+    private final Player[] players;
+    private final Turn turn;
 
     public Connect4() {
         this.board = new Board();
@@ -14,25 +14,28 @@ public class Connect4 {
 
     public void play() {
 
-        boolean hasWinner = false;
+        boolean hasWinner;
         do {
             board.show();
             players[turn.getTurn()].putToken();
             hasWinner = board.hasWinner();
 
-            if(!hasWinner) {
+            if (!hasWinner) {
                 turn.changeTurn();
             }
 
-        } while (!hasWinner);
+        } while (!hasWinner && !turn.isDraw());
 
         board.show();
+        if (hasWinner) {
+            players[turn.getTurn()].showWinnerMessage();
+        } else {
+            board.showDraw();
+        }
 
-        players[turn.getTurn()].showWinnerMessage();
     }
 
-    public static void main(String args[]) {
-        Connect4 connect4 = new Connect4();
-        connect4.play();
+    public static void main(String[] args) {
+        new Connect4().play();
     }
 }
