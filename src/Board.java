@@ -85,7 +85,7 @@ public class Board {
 
     public boolean isAvailableColumn(int column) {
 
-        if (this.map[0][column] != '-') {
+        if (this.map[0][column] != EMPTY_VALUE) {
             System.out.println("This column is full");
             return false;
         }
@@ -99,7 +99,7 @@ public class Board {
         int row = 0;
 
         for (int i = 0; i < MAX_ROWS; i++) {
-            if (this.map[i][column] == '-') {
+            if (this.map[i][column] == EMPTY_VALUE) {
                 row = i;
             }
         }
