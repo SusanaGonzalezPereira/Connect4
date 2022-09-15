@@ -16,13 +16,12 @@ public class Board {
     public void show() {
         System.out.println("Board status:");
         for ( int i = 0; i < MAX_ROWS ; i++ ){
-            System.out.print("|" +  (i+1) + "|\t");
             for ( int j = 0; j < MAX_COLUMNS; j++) {
                 System.out.print("|" + map[i][j] );
             }
             System.out.println("|");
         }
-        System.out.println("|0|\t|1|2|3|4|5|6|7|");
+        System.out.println("|1|2|3|4|5|6|7|");
     }
 
     public boolean hasWinner() {
@@ -50,5 +49,28 @@ public class Board {
         return true;
     }
 
+    public boolean isAvailableColumn(int column) {
 
+        if(this.map[0][column] != '-'){
+            System.out.println("This column is full");
+            return false;
+        }
+
+        return true;
+
+    }
+
+    public void putColumn(int column, char tokenType) {
+
+        int row = 0;
+
+        for(int i = 0 ; i < MAX_ROWS ; i++){
+            if(this.map[i][column] == '-'){
+                row = i;
+            }
+        }
+
+        this.map[row][column] = tokenType;
+
+    }
 }

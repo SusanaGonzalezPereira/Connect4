@@ -12,17 +12,29 @@ public class Player {
 
     public void putToken() {
 
-        Coordinate coordinate = new Coordinate();
+        Scanner scanner = new Scanner(System.in);
+        int column = 0;
 
         do {
 
-            coordinate.askValues();
+            try{
 
-        }while(!this.board.isAvailableCoordinate(coordinate));
+                do {
+                    System.out.print("Please insert a col [1-" + Board.MAX_COLUMNS + "]:");
+                    column = scanner.nextInt();
 
-        this.board.putCoordinate(coordinate);
+                }while(column <= 0 || column > Board.MAX_COLUMNS);
 
 
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+            column--;
+
+        }while(!this.board.isAvailableColumn(column));
+
+        this.board.putColumn(column, tokenType);
 
     }
 }
