@@ -50,9 +50,5 @@ public class Board {
         return true;
     }
 
-    public boolean isAvailableRow(int row) {
-    }
 
-    public boolean isAvailableCol(int col) {
-    }
 }

@@ -13,23 +13,17 @@ public class Player {
     public void putToken() {
 
         Scanner scanner = new Scanner(System.in);
-        int row = 0;
-        int col = 0;
+        Coordinate coordinate = new Coordinate();
 
         try{
 
             do {
-                System.out.print("Please insert a row [1-6]:");
-                row = scanner.nextInt();
 
-            }while(!this.board.isAvailableRow(row));
+                coordinate.askValues();
 
-            do {
-                System.out.print("Please insert a col [1-7]:");
-                col = scanner.nextInt();
+            }while(!this.board.isAvailableCoordinate(coordinate));
 
-            }while(!this.board.isAvailableCol(col));
-
+            this.board.putCoordinate(coordinate);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
