@@ -1,8 +1,8 @@
 public class Board {
 
     private char map [][];
-    private static int MAX_ROWS = 6;
-    private static int MAX_COLUMNS = 7;
+    protected static int MAX_ROWS = 6;
+    protected static int MAX_COLUMNS = 7;
 
     public Board() {
         this.map = new char[MAX_ROWS][MAX_COLUMNS];

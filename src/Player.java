@@ -12,24 +12,17 @@ public class Player {
 
     public void putToken() {
 
-        Scanner scanner = new Scanner(System.in);
         Coordinate coordinate = new Coordinate();
 
-        try{
+        do {
 
-            do {
+            coordinate.askValues();
 
-                coordinate.askValues();
+        }while(!this.board.isAvailableCoordinate(coordinate));
 
-            }while(!this.board.isAvailableCoordinate(coordinate));
+        this.board.putCoordinate(coordinate);
 
-            this.board.putCoordinate(coordinate);
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            scanner.close();
-        }
 
     }
 }
