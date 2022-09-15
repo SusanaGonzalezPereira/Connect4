@@ -37,4 +37,8 @@ public class Player {
         this.board.putColumn(column, tokenType);
 
     }
+
+    public void showWinnerMessage() {
+        System.out.println("The Player " + this.tokenType + " has won." );
+    }
 }

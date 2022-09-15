@@ -7,20 +7,28 @@ public class Connect4 {
     public Connect4() {
         this.board = new Board();
         this.players = new Player[2];
-        for (int i = 0; i < 2; i++) {
-            players[i] = new Player(this.board, 'x');
-        }
+        players[0] = new Player(this.board, 'x');
+        players[1] = new Player(this.board, 'O');
         this.turn = new Turn();
     }
 
     public void play() {
+
+        boolean hasWinner = false;
         do {
             board.show();
             players[turn.getTurn()].putToken();
-            turn.changeTurn();
-        } while (!board.hasWinner());
+            hasWinner = board.hasWinner();
+
+            if(!hasWinner) {
+                turn.changeTurn();
+            }
+
+        } while (!hasWinner);
 
         board.show();
+
+        players[turn.getTurn()].showWinnerMessage();
     }
 
     public static void main(String args[]) {
