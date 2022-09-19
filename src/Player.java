@@ -20,7 +20,7 @@ public class Player {
             try {
 
                 do {
-                    System.out.print( "Player " + this.tokenType + ". Please insert a column [1-" + Board.MAX_COLUMNS + "]:");
+                    System.out.print("Player " + this.tokenType + ". Please insert a column [1-" + Board.MAX_COLUMNS + "]:");
                     column = scanner.nextInt();
 
                 } while (column <= 0 || column > Board.MAX_COLUMNS);
@@ -40,5 +40,9 @@ public class Player {
 
     public void showWinnerMessage() {
         System.out.println("The Player " + this.tokenType + " has won.");
+    }
+
+    public char getTokenType() {
+        return tokenType;
     }
 }

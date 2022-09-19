@@ -18,7 +18,7 @@ public class Connect4 {
         do {
             board.show();
             players[turn.getTurn()].putToken();
-            hasWinner = board.hasWinner();
+            hasWinner = board.hasWinner(players[turn.getTurn()].getTokenType());
 
             if (!hasWinner) {
                 turn.changeTurn();
