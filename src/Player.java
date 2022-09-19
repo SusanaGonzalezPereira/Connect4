@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class Player {
 
-    private final Board board;
+    private Board board;
     private final char tokenType;
 
     public Player(Board board, char tokenType) {
-        this.board = board;
+        this.setBoard(board);
         this.tokenType = tokenType;
     }
 
@@ -20,10 +20,10 @@ public class Player {
             try {
 
                 do {
-                    System.out.print("Player " + this.tokenType + ". Please insert a column [1-" + Board.MAX_COLUMNS + "]:");
+                    System.out.print("Player " + this.tokenType + ". Please insert a column [1-" + Connect4.MAX_COLUMNS + "]:");
                     column = scanner.nextInt();
 
-                } while (column <= 0 || column > Board.MAX_COLUMNS);
+                } while (column <= 0 || column > Connect4.MAX_COLUMNS);
 
 
             } catch (Exception e) {
@@ -44,5 +44,9 @@ public class Player {
 
     public char getTokenType() {
         return tokenType;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
     }
 }

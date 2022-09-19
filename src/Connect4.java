@@ -3,6 +3,10 @@ public class Connect4 {
     private final Board board;
     private final Player[] players;
     private final Turn turn;
+    public static final int MAX_ROWS = 6;
+    public static final int MAX_COLUMNS = 7;
+    public static final char EMPTY_VALUE = '-';
+    public static final int MAX_TURNS = (Connect4.MAX_ROWS * Connect4.MAX_COLUMNS) - 1;
 
     public Connect4() {
         this.board = new Board();

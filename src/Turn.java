@@ -1,6 +1,5 @@
 public class Turn {
 
-    private final int MAX_TURNS = (Board.MAX_ROWS * Board.MAX_COLUMNS) - 1;
     private int turn; //TODO: Ask if this is ok
 
     public Turn() {
@@ -16,6 +15,6 @@ public class Turn {
     }
 
     public boolean isDraw() {
-        return turn == MAX_TURNS;
+        return turn == Connect4.MAX_TURNS;
     }
 }
