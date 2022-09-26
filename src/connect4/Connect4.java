@@ -1,13 +1,12 @@
 package connect4;
 
 import connect4.models.Game;
-import connect4.utils.GameModeEnum;
 import connect4.views.View;
 
 public class Connect4 {
 
-    private Game game;
-    private View view;
+    private final Game game;
+    private final View view;
 
     public Connect4() {
         this.game = new Game();
@@ -25,12 +24,6 @@ public class Connect4 {
     }
 
     /*
-        preguntar cuantos jugadores:
-        0 demo
-        1 jugador vs maquina
-        2 jugador vs jugador
-        vista separadas de los modelos -> tecnica del doble despacho ya que cada vista es diferente para un humano y para una maquina
-        no controladores
         clase coordenada
         clase direccion
         hasWinner

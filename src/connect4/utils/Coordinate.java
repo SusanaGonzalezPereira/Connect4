@@ -4,8 +4,8 @@ import connect4.models.Board;
 
 public class Coordinate {
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Coordinate(int column, Board board) {
         this.x = getAvailableCoordinateX(column, board);
@@ -30,9 +30,6 @@ public class Coordinate {
     }
 
     public boolean isAvailable(Board board) {
-        if (board.getColors()[this.x][this.y] == ColorEnum.NULLCOLOR) {
-            return true;
-        }
-        return false;
+        return board.getColors()[this.x][this.y] == ColorEnum.NULLCOLOR;
     }
 }

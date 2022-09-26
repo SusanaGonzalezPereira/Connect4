@@ -3,7 +3,7 @@ package connect4.models;
 public class Turn {
 
     private int value;
-    private Player[] players;
+    private final Player[] players;
 
     public Turn(Player[] players) {
         this.value = 0;

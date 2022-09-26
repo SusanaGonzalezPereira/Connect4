@@ -4,9 +4,9 @@ import connect4.models.Game;
 
 public class View extends WithGameView {
 
-    private MenuView menuView;
-    private StartView startView;
-    private PlayView playView;
+    private final MenuView menuView;
+    private final StartView startView;
+    private final PlayView playView;
 
     public View(Game game) {
         super(game);
@@ -15,7 +15,7 @@ public class View extends WithGameView {
         this.playView = new PlayView(this.game);
     }
 
-    public void showMenu(){
+    public void showMenu() {
         this.menuView.interact();
     }
 

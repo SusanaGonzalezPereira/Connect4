@@ -2,8 +2,8 @@ package connect4.utils;
 
 public class Interval {
 
-    private int min;
-    private int max;
+    private final int min;
+    private final int max;
 
     public Interval(int min, int max) {
         this.min = min;

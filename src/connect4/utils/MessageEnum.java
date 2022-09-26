@@ -8,19 +8,16 @@ public enum MessageEnum {
     FULL_COLUM("This column is full"),
     PLAYER_WIN("The Player #player has won."),
     GAME_DRAW("This game ended in a draw!"),
-    INSERT_COLOR("Player #player. Please insert a column [1-#maxColumn]: "),
+    INSERT_COLOR("#player Player. Please insert a column [1-#maxColumn]: "),
     WELCOME("WELCOME"),
     GAME_MODES("Please choose one of the following game modes: \n 1. Two Players \n 2. Player VS Machine \n 3. Demo"),
+    MACHINE_MESSAGE("#player Machine has chosen Coordinate: {#x, #y}"),
     BOARD_INDEX("|1|2|3|4|5|6|7|");
 
-    private String message;
+    private final String message;
 
     MessageEnum(String message) {
         this.message = message;
-    }
-
-    public void write() {
-        System.out.print(this.message);
     }
 
     public void writeln() {
@@ -33,7 +30,14 @@ public enum MessageEnum {
     }
 
     public void write(int maxColumn, String player) {
-        System.out.print(this.message.replaceAll("#player", "" + player).replaceAll("#maxColumn", "" + maxColumn));
+        System.out.print(this.message.replaceAll("#player", "" + player)
+                .replaceAll("#maxColumn", "" + maxColumn));
+    }
+
+    public void writeln(String player, Coordinate coordinate) {
+        System.out.println(this.message.replaceAll("#player", "" + player)
+                .replaceAll("#x", "" + coordinate.getX())
+                .replaceAll("#y", "" + coordinate.getY()));
     }
 
     public void write(ColorEnum color) {

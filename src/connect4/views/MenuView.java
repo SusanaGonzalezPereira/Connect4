@@ -7,7 +7,7 @@ import connect4.utils.MessageEnum;
 
 import java.util.Scanner;
 
-public class MenuView extends WithGameView{
+public class MenuView extends WithGameView {
     public MenuView(Game game) {
         super(game);
     }
@@ -21,11 +21,12 @@ public class MenuView extends WithGameView{
                 MessageEnum.GAME_MODES.writeln();
                 option = scanner.nextInt();
                 option--;
-            } while (!new Interval(-1,3).isBetweenExclusive(option));
+            } while (!new Interval(-1, 3).isBetweenExclusive(option));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         this.game.setGameMode(GameModeEnum.values()[option]);
+        this.game.initializePlayers();
     }
 }

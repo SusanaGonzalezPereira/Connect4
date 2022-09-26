@@ -11,8 +11,8 @@ public enum ColorEnum {
     @Override
     public String toString() {
         return switch (this) {
-            case RED -> "R";
-            case BLUE -> "B";
+            case RED -> "X";
+            case BLUE -> "O";
             case NULLCOLOR -> "-";
         };
     }
