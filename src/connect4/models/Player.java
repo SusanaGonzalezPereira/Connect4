@@ -1,8 +1,7 @@
 package connect4.models;
 
 import connect4.utils.ColorEnum;
-
-import java.util.Scanner;
+import connect4.utils.Coordinate;
 
 public class Player {
 
@@ -14,21 +13,8 @@ public class Player {
         this.color = color;
     }
 
-    public void putColor() {
-        Scanner scanner = new Scanner(System.in);
-        int column = 0;
-        do {
-            try {
-                do {
-                    System.out.print("Player " + this.color + ". Please insert a column [1-" + this.board.getMaxColumns() + "]:");
-                    column = scanner.nextInt();
-                    column--;
-                } while (!this.board.isOnBoard(column));
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        } while (!this.board.isAvailableColumn(column));
-        this.board.putColumn(column, color);
+    public void putColor(Coordinate coordinate) {
+        this.board.putColumn(coordinate, color);
     }
 
     public ColorEnum getColor() {

@@ -1,7 +1,5 @@
 package connect4.models;
 
-import connect4.models.Player;
-
 public class Turn {
 
     private int value;
@@ -16,7 +14,7 @@ public class Turn {
         this.value++;
     }
 
-    public Player getCurrentPlayer(){
-       return players[this.value % 2];
+    public Player getCurrentPlayer() {
+        return players[this.value % 2];
     }
 }

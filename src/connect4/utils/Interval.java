@@ -10,7 +10,7 @@ public class Interval {
         this.max = max;
     }
 
-    public boolean isBetweenExclusive(int value){
+    public boolean isBetweenExclusive(int value) {
         return value > min && value < max;
     }
 }

@@ -1,8 +1,8 @@
 package connect4.models;
 
 import connect4.utils.ColorEnum;
+import connect4.utils.Coordinate;
 import connect4.utils.Interval;
-import connect4.views.BoardView;
 
 import java.util.Arrays;
 
@@ -26,25 +26,14 @@ public class Board {
         return false;
     }
 
-    public boolean isAvailableColumn(int column) {
-        if (this.colors[0][column] != ColorEnum.NULLCOLOR) {
-            System.out.println("This column is full");
-            return false;
-        }
-        return true;
-    }
-
-    public void putColumn(int column, ColorEnum tokenType) {
-        int i = maxRows-1;
-        while(this.colors[i][column] != ColorEnum.NULLCOLOR){
-            i--;
-        }
-        this.colors[i][column] = tokenType;
+    public void putColumn(Coordinate coordinate, ColorEnum color) {
+        this.colors[coordinate.getX()][coordinate.getY()] = color;
     }
 
     public boolean isFull() {
         return !Arrays.asList(this.colors[0]).contains(ColorEnum.NULLCOLOR);
     }
+
     public int getMaxRows() {
         return maxRows;
     }
@@ -60,4 +49,13 @@ public class Board {
     public boolean isOnBoard(int column) {
         return new Interval(-1, this.maxColumns).isBetweenExclusive(column);
     }
+
+    public boolean isAvailableCoordinate(Coordinate coordinate) {
+        return coordinate.isAvailable(this);
+    }
+
+    public boolean isAvailableColumn(int column) {
+        return this.colors[0][column] == ColorEnum.NULLCOLOR;
+    }
+
 }

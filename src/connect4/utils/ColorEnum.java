@@ -2,7 +2,7 @@ package connect4.utils;
 
 import java.util.List;
 
-import static java.util.List.*;
+import static java.util.List.of;
 
 public enum ColorEnum {
     RED, BLUE, NULLCOLOR;
