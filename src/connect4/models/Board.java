@@ -11,7 +11,6 @@ public class Board {
     private final int maxRows = 6;
     private final int maxColumns = 7;
     private final ColorEnum[][] colors;
-    private BoardView boardView;
 
     public Board() {
         this.colors = new ColorEnum[this.maxRows][this.maxColumns];
