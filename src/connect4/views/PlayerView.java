@@ -11,19 +11,17 @@ public class PlayerView {
         this.game = game;
     }
 
-    private void putColor() {
+    private Coordinate putColor() {
         Coordinate coordinate;
         do {
             coordinate = this.game.selectCoordinatePoint();
         } while (!this.game.isAvailableCoordinate(coordinate));
         this.game.putColor(coordinate);
+        return coordinate;
     }
 
-    public void interact() {
-        if (!this.game.isFull()) {
-            this.putColor();
-        }
+    public Coordinate interact() {
+        return this.putColor();
     }
-
 
 }

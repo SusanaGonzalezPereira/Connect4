@@ -23,7 +23,7 @@ public class MenuView extends WithGameView {
                 option--;
             } while (!new Interval(-1, 3).isBetweenExclusive(option));
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            MessageEnum.ERROR.writeln(e.getMessage());
         }
 
         this.game.setGameMode(GameModeEnum.values()[option]);

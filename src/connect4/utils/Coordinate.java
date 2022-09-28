@@ -8,14 +8,19 @@ public class Coordinate {
     private final int y;
 
     public Coordinate(int column, Board board) {
-        this.x = getAvailableCoordinateX(column, board);
+        this.x = this.getAvailableCoordinateX(column, board);
         this.y = column;
     }
 
+    public Coordinate(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     private int getAvailableCoordinateX(int column, Board board) {
-        assert board.getColors()[board.getMaxRows()][column] == ColorEnum.NULLCOLOR;
+        assert board.getColors()[board.getMaxRows()][column] == ColorEnum.NULL_COLOR;
         int i = board.getMaxRows() - 1;
-        while (board.getColors()[i][column] != ColorEnum.NULLCOLOR) {
+        while (board.getColors()[i][column] != ColorEnum.NULL_COLOR) {
             i--;
         }
         return i;
@@ -30,6 +35,16 @@ public class Coordinate {
     }
 
     public boolean isAvailable(Board board) {
-        return board.getColors()[this.x][this.y] == ColorEnum.NULLCOLOR;
+        return board.getColors()[this.x][this.y] == ColorEnum.NULL_COLOR;
     }
+
+    public Coordinate nextOppositeDirection(DirectionEnum direction) {
+        return new Coordinate(this.x + direction.opposite()[1], this.y + direction.opposite()[0]);
+    }
+
+    public Coordinate nextDirection(DirectionEnum direction) {
+        return new Coordinate(this.x + direction.values[1], this.y + direction.values[0]);
+    }
+
+
 }

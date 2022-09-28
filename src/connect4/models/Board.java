@@ -2,6 +2,7 @@ package connect4.models;
 
 import connect4.utils.ColorEnum;
 import connect4.utils.Coordinate;
+import connect4.utils.DirectionEnum;
 import connect4.utils.Interval;
 
 import java.util.Arrays;
@@ -16,14 +17,14 @@ public class Board {
         this.colors = new ColorEnum[this.maxRows][this.maxColumns];
         for (int i = 0; i < this.maxRows; i++) {
             for (int j = 0; j < this.maxColumns; j++) {
-                this.colors[i][j] = ColorEnum.NULLCOLOR;
+                this.colors[i][j] = ColorEnum.NULL_COLOR;
             }
         }
     }
 
-    public boolean hasWinner(ColorEnum color) {
-        //TODO
-        return false;
+    public boolean hasWinner(ColorEnum color, Coordinate coordinate, DirectionEnum direction) {
+        Coordinate currentCoordinate = this.moveOpposite(color, coordinate, direction);
+        return isWinnerDirection(color, currentCoordinate, direction);
     }
 
     public void putColumn(Coordinate coordinate, ColorEnum color) {
@@ -31,7 +32,7 @@ public class Board {
     }
 
     public boolean isFull() {
-        return !Arrays.asList(this.colors[0]).contains(ColorEnum.NULLCOLOR);
+        return !Arrays.asList(this.colors[0]).contains(ColorEnum.NULL_COLOR);
     }
 
     public int getMaxRows() {
@@ -50,12 +51,43 @@ public class Board {
         return new Interval(-1, this.maxColumns).isBetweenExclusive(column);
     }
 
+    public boolean isInsideBoard(Coordinate coordinate){
+        return new Interval(-1,this.maxColumns).isBetweenExclusive(coordinate.getY())
+                && new Interval(-1, this.maxRows).isBetweenExclusive(coordinate.getX());
+    }
+
     public boolean isAvailableCoordinate(Coordinate coordinate) {
         return coordinate.isAvailable(this);
     }
 
     public boolean isAvailableColumn(int column) {
-        return this.colors[0][column] == ColorEnum.NULLCOLOR;
+        return this.colors[0][column] == ColorEnum.NULL_COLOR;
+    }
+
+    private Coordinate moveOpposite(ColorEnum color, Coordinate coordinate, DirectionEnum direction){
+        Coordinate oppositeCoordinate = new Coordinate(coordinate.getX() + direction.opposite()[1], coordinate.getY() + direction.opposite()[0]);
+
+        while(isInsideBoard(oppositeCoordinate)
+                && this.colors[oppositeCoordinate.getX()][oppositeCoordinate.getY()] == color
+        ){
+            oppositeCoordinate = oppositeCoordinate.nextOppositeDirection(direction);
+        }
+
+        return oppositeCoordinate;
+    }
+
+    private boolean isWinnerDirection(ColorEnum color, Coordinate coordinate, DirectionEnum direction){
+        int count = 0;
+        Coordinate nextCoordinate = new Coordinate(coordinate.getX() + direction.values[1], coordinate.getY() + direction.values[0]);
+
+        while( isInsideBoard(nextCoordinate)
+                && this.colors[nextCoordinate.getX()][nextCoordinate.getY()] == color
+        ){
+            nextCoordinate = nextCoordinate.nextDirection(direction);
+            count++;
+        }
+
+        return count >= 4;
     }
 
 }

@@ -22,10 +22,4 @@ public class Connect4 {
         this.view.start();
         this.view.play();
     }
-
-    /*
-        clase coordenada
-        clase direccion
-        hasWinner
-         */
 }

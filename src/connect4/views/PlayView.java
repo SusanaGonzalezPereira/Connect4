@@ -1,6 +1,7 @@
 package connect4.views;
 
 import connect4.models.Game;
+import connect4.utils.Coordinate;
 import connect4.utils.MessageEnum;
 
 public class PlayView extends WithGameView {
@@ -14,14 +15,14 @@ public class PlayView extends WithGameView {
         boolean hasWinner;
 
         do {
-            new PlayerView(this.game).interact();
+            Coordinate coordinate = new PlayerView(this.game).interact();
 
-            hasWinner = this.game.hasWinner();
+            hasWinner = this.game.hasWinner(coordinate);
             if (!hasWinner) {
                 this.game.changeTurn();
             }
             new BoardView().show(this.game);
-        } while (!this.game.hasWinner() && !this.game.isFull());
+        } while (!hasWinner && !this.game.isFull());
 
         if (hasWinner) {
             MessageEnum.PLAYER_WIN.writeln(this.game.getActiveColor());

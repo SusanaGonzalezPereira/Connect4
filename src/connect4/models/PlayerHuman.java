@@ -21,12 +21,12 @@ public class PlayerHuman extends Player {
                 MessageEnum.INSERT_COLOR.write(game.getMaxColumns(), game.getActiveColor().toString());
                 column = scanner.nextInt();
                 column--;
-                if (!game.isAvailableColumn(column)) {
-                    MessageEnum.FULL_COLUM.writeln();
+                if (!game.isOnBoard(column) || !game.isAvailableColumn(column)) {
+                    MessageEnum.CHOOSE_OTHER_COLUMN.writeln();
                 }
-            } while (!game.isAvailableColumn(column) || !game.isOnBoard(column));
+            } while (!game.isOnBoard(column) || !game.isAvailableColumn(column));
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            MessageEnum.ERROR.writeln(e.getMessage());
         }
 
         return new Coordinate(column, game.getBoard());
